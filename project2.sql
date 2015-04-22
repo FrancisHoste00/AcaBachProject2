@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 22 apr 2015 om 17:26
+-- Gegenereerd op: 22 apr 2015 om 17:44
 -- Serverversie: 5.6.21
 -- PHP-versie: 5.6.3
 
@@ -87,6 +87,29 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `results`
+--
+
+CREATE TABLE IF NOT EXISTS `results` (
+`idResults` int(11) NOT NULL,
+  `correct` tinyint(1) NOT NULL,
+  `Exam_idExam` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `role`
+--
+
+CREATE TABLE IF NOT EXISTS `role` (
+`role_id` bigint(20) NOT NULL,
+  `Group` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `score`
 --
 
@@ -165,6 +188,18 @@ ALTER TABLE `questions`
  ADD PRIMARY KEY (`idQuestions`,`Exam_idExam`), ADD UNIQUE KEY `idQuestionSet_UNIQUE` (`idQuestions`), ADD KEY `fk_Questions_Exam1_idx` (`Exam_idExam`);
 
 --
+-- Indexen voor tabel `results`
+--
+ALTER TABLE `results`
+ ADD PRIMARY KEY (`idResults`,`Exam_idExam`), ADD KEY `fk_Results_Exam1_idx` (`Exam_idExam`);
+
+--
+-- Indexen voor tabel `role`
+--
+ALTER TABLE `role`
+ ADD PRIMARY KEY (`role_id`), ADD UNIQUE KEY `idUserGroup_UNIQUE` (`role_id`);
+
+--
 -- Indexen voor tabel `score`
 --
 ALTER TABLE `score`
@@ -207,6 +242,16 @@ MODIFY `idImageLink` bigint(20) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `questions`
 MODIFY `idQuestions` bigint(20) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT voor een tabel `results`
+--
+ALTER TABLE `results`
+MODIFY `idResults` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `role`
+--
+ALTER TABLE `role`
+MODIFY `role_id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT voor een tabel `usergroup`
 --
 ALTER TABLE `usergroup`
@@ -237,6 +282,12 @@ ADD CONSTRAINT `fk_ImageLink_Questions1` FOREIGN KEY (`Questions_idQuestions`) R
 --
 ALTER TABLE `questions`
 ADD CONSTRAINT `fk_Questions_Exam1` FOREIGN KEY (`Exam_idExam`) REFERENCES `exam` (`idExam`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Beperkingen voor tabel `results`
+--
+ALTER TABLE `results`
+ADD CONSTRAINT `fk_Results_Exam1` FOREIGN KEY (`Exam_idExam`) REFERENCES `exam` (`idExam`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `score`
