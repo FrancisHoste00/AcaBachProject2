@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 22 apr 2015 om 17:44
+-- Gegenereerd op: 22 apr 2015 om 17:58
 -- Serverversie: 5.6.21
 -- PHP-versie: 5.6.3
 
@@ -146,18 +146,11 @@ INSERT INTO `usergroup` (`idUserGroup`, `Group`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`idUsers` bigint(20) NOT NULL,
-  `userName` varchar(45) NOT NULL,
-  `passWord` varchar(45) NOT NULL,
-  `UserGroup_idUserGroup` bigint(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Gegevens worden geëxporteerd voor tabel `users`
---
-
-INSERT INTO `users` (`idUsers`, `userName`, `passWord`, `UserGroup_idUserGroup`) VALUES
-(1, 'Francis', '123', 1);
+`usr_id` bigint(20) NOT NULL,
+  `usr_name` varchar(45) NOT NULL,
+  `usr_password` varchar(45) NOT NULL,
+  `usrl_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -215,7 +208,7 @@ ALTER TABLE `usergroup`
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`idUsers`,`UserGroup_idUserGroup`), ADD UNIQUE KEY `idUsers_UNIQUE` (`idUsers`), ADD KEY `fk_Users_UserGroup_idx` (`UserGroup_idUserGroup`);
+ ADD PRIMARY KEY (`usr_id`,`usrl_id`), ADD UNIQUE KEY `idUsers_UNIQUE` (`usr_id`), ADD KEY `fk_Users_UserGroup_idx` (`usrl_id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
@@ -260,16 +253,10 @@ MODIFY `idUserGroup` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-MODIFY `idUsers` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `usr_id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
-
---
--- Beperkingen voor tabel `examinees`
---
-ALTER TABLE `examinees`
-ADD CONSTRAINT `fk_Examinees_UserGroup1` FOREIGN KEY (`UserGroup_idUserGroup`) REFERENCES `usergroup` (`idUserGroup`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `imagelink`
@@ -295,12 +282,6 @@ ADD CONSTRAINT `fk_Results_Exam1` FOREIGN KEY (`Exam_idExam`) REFERENCES `exam` 
 ALTER TABLE `score`
 ADD CONSTRAINT `fk_Score_Exam1` FOREIGN KEY (`Exam_idExam`) REFERENCES `exam` (`idExam`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `fk_Score_Examinees1` FOREIGN KEY (`Examinees_idExaminees`) REFERENCES `examinees` (`idExaminees`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Beperkingen voor tabel `users`
---
-ALTER TABLE `users`
-ADD CONSTRAINT `fk_Users_UserGroup` FOREIGN KEY (`UserGroup_idUserGroup`) REFERENCES `usergroup` (`idUserGroup`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
