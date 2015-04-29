@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 22 apr 2015 om 17:26
+-- Gegenereerd op: 29 apr 2015 om 16:59
 -- Serverversie: 5.6.21
 -- PHP-versie: 5.6.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databank: `project2`
+-- Databank: `zf2project`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `exam` (
 `idExam` bigint(20) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `idExaminator` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `exam`
+--
+
+INSERT INTO `exam` (`idExam`, `date`, `idExaminator`) VALUES
+(1, '2015-04-29 14:48:00', 3),
+(2, '2015-04-29 14:48:10', 4),
+(3, '2015-04-29 14:48:25', 3),
+(4, '2015-04-29 14:48:28', 4);
 
 -- --------------------------------------------------------
 
@@ -44,15 +55,16 @@ CREATE TABLE IF NOT EXISTS `examinees` (
   `email` varchar(45) DEFAULT NULL,
   `dateExam` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UserGroup_idUserGroup` bigint(20) NOT NULL DEFAULT '3'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `examinees`
 --
 
 INSERT INTO `examinees` (`idExaminees`, `firstName`, `lastName`, `email`, `dateExam`, `UserGroup_idUserGroup`) VALUES
-(1, 'Francis', 'Hoste', 'hallo@kroket.be', '2015-04-01 17:48:39', 3),
-(3, 'Jopie', 'VandeGraskant', 'hallo@kroket.be', '2015-04-01 17:53:57', 3);
+(16, 'VanWaes', 'Jonas', 'baby_boyke_@hotmail.com', '2015-04-29 12:06:24', 3),
+(17, 'Francis', 'Mister', 'francis@khbo.be', '2015-04-29 12:07:08', 3),
+(18, 'qdfqsdf', 'qsdfqsdf', 'qfdsfdq', '2015-04-29 13:23:50', 3);
 
 -- --------------------------------------------------------
 
@@ -71,6 +83,30 @@ CREATE TABLE IF NOT EXISTS `imagelink` (
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `interexamquestions`
+--
+
+CREATE TABLE IF NOT EXISTS `interexamquestions` (
+`idInterExamQuestions` int(11) NOT NULL,
+  `idExam` int(11) NOT NULL,
+  `idQuestions` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `interexamquestions`
+--
+
+INSERT INTO `interexamquestions` (`idInterExamQuestions`, `idExam`, `idQuestions`) VALUES
+(1, 1, 6),
+(2, 1, 7),
+(3, 2, 6),
+(4, 2, 7),
+(5, 1, 8),
+(6, 2, 8);
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `questions`
 --
 
@@ -82,6 +118,38 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `alternativeAnswer1` varchar(45) NOT NULL,
   `alternativeAnswer2` varchar(45) NOT NULL,
   `Exam_idExam` bigint(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `questions`
+--
+
+INSERT INTO `questions` (`idQuestions`, `questionSet`, `question`, `correctAnswer`, `alternativeAnswer1`, `alternativeAnswer2`, `Exam_idExam`) VALUES
+(6, 1, 'Question1', 'CorrectAnswer1', 'FalseAnswer1-1', 'FalseAnswer1-2', 1),
+(7, 1, 'Question2', 'CorrectAnswer2', 'FalseAnswer2-1', 'FalseAnswer2-2', 1),
+(8, 1, 'Question3', 'CorrectAnswer3', 'FalseAnswer3-1', 'FalseAnswer3-2', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `results`
+--
+
+CREATE TABLE IF NOT EXISTS `results` (
+`idResults` int(11) NOT NULL,
+  `correct` tinyint(1) NOT NULL,
+  `Exam_idExam` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `role`
+--
+
+CREATE TABLE IF NOT EXISTS `role` (
+`role_id` bigint(20) NOT NULL,
+  `Group` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -127,14 +195,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userName` varchar(45) NOT NULL,
   `passWord` varchar(45) NOT NULL,
   `UserGroup_idUserGroup` bigint(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`idUsers`, `userName`, `passWord`, `UserGroup_idUserGroup`) VALUES
-(1, 'Francis', '123', 1);
+(1, 'Francis', '202cb962ac59075b964b07152d234b70', 1),
+(2, 'JonasVW', '1411a6edc5f0f494118b79ff3fa6e090', 1),
+(3, 'JonasVW2', '1411a6edc5f0f494118b79ff3fa6e090', 2),
+(4, 'GerdVB', '1411a6edc5f0f494118b79ff3fa6e090', 2),
+(5, 'Kevin', 'b1ec52ee9e4f92ede004dadfa1139406', 2);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -159,10 +231,28 @@ ALTER TABLE `imagelink`
  ADD PRIMARY KEY (`idImageLink`,`Questions_idQuestions`), ADD UNIQUE KEY `idImageLink_UNIQUE` (`idImageLink`), ADD UNIQUE KEY `Questions_idQuestions_UNIQUE` (`Questions_idQuestions`), ADD UNIQUE KEY `Original_UNIQUE` (`Original`), ADD UNIQUE KEY `highRes_UNIQUE` (`highRes`), ADD UNIQUE KEY `lowRes_UNIQUE` (`lowRes`), ADD KEY `fk_ImageLink_Questions1_idx` (`Questions_idQuestions`);
 
 --
+-- Indexen voor tabel `interexamquestions`
+--
+ALTER TABLE `interexamquestions`
+ ADD PRIMARY KEY (`idInterExamQuestions`);
+
+--
 -- Indexen voor tabel `questions`
 --
 ALTER TABLE `questions`
  ADD PRIMARY KEY (`idQuestions`,`Exam_idExam`), ADD UNIQUE KEY `idQuestionSet_UNIQUE` (`idQuestions`), ADD KEY `fk_Questions_Exam1_idx` (`Exam_idExam`);
+
+--
+-- Indexen voor tabel `results`
+--
+ALTER TABLE `results`
+ ADD PRIMARY KEY (`idResults`,`Exam_idExam`), ADD KEY `fk_Results_Exam1_idx` (`Exam_idExam`);
+
+--
+-- Indexen voor tabel `role`
+--
+ALTER TABLE `role`
+ ADD PRIMARY KEY (`role_id`), ADD UNIQUE KEY `idUserGroup_UNIQUE` (`role_id`);
 
 --
 -- Indexen voor tabel `score`
@@ -190,22 +280,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `exam`
 --
 ALTER TABLE `exam`
-MODIFY `idExam` bigint(20) NOT NULL AUTO_INCREMENT;
+MODIFY `idExam` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT voor een tabel `examinees`
 --
 ALTER TABLE `examinees`
-MODIFY `idExaminees` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `idExaminees` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT voor een tabel `imagelink`
 --
 ALTER TABLE `imagelink`
 MODIFY `idImageLink` bigint(20) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT voor een tabel `interexamquestions`
+--
+ALTER TABLE `interexamquestions`
+MODIFY `idInterExamQuestions` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT voor een tabel `questions`
 --
 ALTER TABLE `questions`
-MODIFY `idQuestions` bigint(20) NOT NULL AUTO_INCREMENT;
+MODIFY `idQuestions` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT voor een tabel `results`
+--
+ALTER TABLE `results`
+MODIFY `idResults` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT voor een tabel `role`
+--
+ALTER TABLE `role`
+MODIFY `role_id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT voor een tabel `usergroup`
 --
@@ -215,7 +320,7 @@ MODIFY `idUserGroup` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-MODIFY `idUsers` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idUsers` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
@@ -237,6 +342,12 @@ ADD CONSTRAINT `fk_ImageLink_Questions1` FOREIGN KEY (`Questions_idQuestions`) R
 --
 ALTER TABLE `questions`
 ADD CONSTRAINT `fk_Questions_Exam1` FOREIGN KEY (`Exam_idExam`) REFERENCES `exam` (`idExam`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Beperkingen voor tabel `results`
+--
+ALTER TABLE `results`
+ADD CONSTRAINT `fk_Results_Exam1` FOREIGN KEY (`Exam_idExam`) REFERENCES `exam` (`idExam`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `score`
