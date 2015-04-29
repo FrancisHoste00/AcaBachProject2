@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-static-top" rule="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand"><img src=" <?php echo $this->basePath('img/zf2-logo.png') ?> " alt="ZendFrameWork"/>
+			&nbsp;<?php echo $this->translate('QuizComputer') ?></a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href=" <?php echo $this->url('home') ?> "><?php echo $this->translate('Home') ?></a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<h1>Registratie</h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('auth/default', array('controller' => 'examinee', 'action' => 'index')));
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('lastName')); ?><br> <?php
+echo $this->formRow($form->get('firstName')); ?><br> <?php
+echo $this->formRow($form->get('email')); ?><br> <?php
+echo $this->formRow($form->get('dateExam')); ?><br> <?php
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+?>

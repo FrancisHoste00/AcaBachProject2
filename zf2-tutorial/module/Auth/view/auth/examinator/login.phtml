@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-static-top" rule="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand"><img src=" <?php echo $this->basePath('img/zf2-logo.png') ?> " alt="ZendFrameWork"/>
+			&nbsp;<?php echo $this->translate('QuizComputer') ?></a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href=" <?php echo $this->url('home') ?> "><?php echo $this->translate('Home') ?></a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<h1>Login </h1>
+<?php echo $this->escapeHtml($this->messages); ?>
+<?php
+	$form = $this->form;
+	$form->setAttribute('action', $this->url('auth/default', array('controller' => 'examinator', 'action' => 'login')));
+	$form->prepare();
+	echo $this->form()->openTag($form);
+	echo $this->formRow($form->get('userName')); ?><br><?php
+	echo $this->formRow($form->get('passWord')); ?><br><?php
+	echo $this->formRow($form->get('rememberme')); ?><br><?php
+	echo $this->formSubmit($form->get('submit'));
+	echo $this->form()->closeTag();
+?>

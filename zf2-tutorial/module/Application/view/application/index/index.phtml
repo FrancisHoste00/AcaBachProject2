@@ -1,0 +1,55 @@
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('Welkom op de Quiz-computer!')) ?></h1>
+    <p><?php echo sprintf($this->translate('We testen je kennis over verkeersborden')) ?></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Doe de test') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('klik hier om je aan te melden')) ?></p>
+                <p><a class="btn btn-success pull-right" href="<?php echo $this->url('auth') ?>"><?php echo $this->translate('Start de test') ?></a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Examinators') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('login voor de examinators.')) ?></p>
+                <p><a class="btn btn-success pull-right" href="<?php echo $this->url('examinator') ?>"><?php echo $this->translate('Log-in') ?></a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Administrators') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('Admin-page.')) ?></p>
+                <p><a class="btn btn-success pull-right" href="<?php echo $this->url('admin') ?>"><?php echo $this->translate('Log-in') ?></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Over dit project') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo sprintf($this->translate('This project was made to demonstrate our capabilities with ... Mysql, Php-Zend Framework, CSS, Microcontrollers, LED-boards ')) ?></p>
+            </div>
+        </div>
+    </div>
+</div>
