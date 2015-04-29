@@ -1,0 +1,8 @@
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\bin\Debug\Imageconversion.exe.config
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\obj\Debug\Imageconversion.csprojResolveAssemblyReference.cache
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\obj\Debug\Imageconversion.Properties.Resources.resources
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\obj\Debug\Imageconversion.csproj.GenerateResource.Cache
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\bin\Debug\Imageconversion.exe
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\bin\Debug\Imageconversion.pdb
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\obj\Debug\Imageconversion.exe
+C:\Users\Francis\Documents\googledrive\DOCUMENTS\School\207 - projectlab\Project2\AcaBachProject2\Imageconversion\Imageconversion\obj\Debug\Imageconversion.pdb
