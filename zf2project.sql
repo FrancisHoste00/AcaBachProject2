@@ -68,6 +68,20 @@ CREATE TABLE IF NOT EXISTS `imagelink` (
   `Questions_idQuestions` 	int(11) 	NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `imagelink`
+--
+
+INSERT INTO `imagelink` (`idImageLink`, `Original`, `highRes`, `lowRes`, `Questions_idQuestions`) VALUES
+(1, '../questionImages/original/1.png', '../questionImages/highRes/1.png', '../questionImages/lowRes/1.png', 1),
+(2, '../questionImages/original/2.png', '../questionImages/highRes/2.png', '../questionImages/lowRes/2.png', 2),
+(3, '../questionImages/original/3.png', '../questionImages/highRes/3.png', '../questionImages/lowRes/3.png', 3),
+(4, '../questionImages/original/4.png', '../questionImages/highRes/4.png', '../questionImages/lowRes/4.png', 4),
+(5, '../questionImages/original/5.png', '../questionImages/highRes/5.png', '../questionImages/lowRes/5.png', 5),
+(6, '../questionImages/original/6.png', '../questionImages/highRes/6.png', '../questionImages/lowRes/6.png', 6),
+(7, '../questionImages/original/7.png', '../questionImages/highRes/7.png', '../questionImages/lowRes/7.png', 7),
+(8, '../questionImages/original/8.png', '../questionImages/highRes/8.png', '../questionImages/lowRes/8.png', 8);
+
 -- --------------------------------------------------------
 
 --
