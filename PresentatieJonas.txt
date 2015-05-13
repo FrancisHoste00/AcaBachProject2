@@ -1,0 +1,21 @@
+Francis, kun je deze slides er ook nog insteken?
+
+Bij het toekomstig werk vd Front-end
+
+Slide 1:
+--------
+Titel:	Uitbreidende functies
+Tekst:	- Full multi user system
+	- Aanpassen bestaand examen
+	- Filtering (admin & examinator)
+	- Feedback examen-examinee
+
+Slide 2:
+--------
+Titel:	Compatabiliteit
+Tekst: 	- Ontwikkeling en development
+	- Andere browsers
+		- Firefox
+		- Ie
+		- ...
+	
